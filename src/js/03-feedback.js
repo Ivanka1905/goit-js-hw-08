@@ -35,7 +35,7 @@ function storageFormData(event) {
     if (localStorage.getItem(messageKey)) {
        Object.assign(formValue, JSON.parse(localStorage.getItem(messageKey)))
     };
-    formValue[event.target.name] = event.target.value;
+    formValue[event.target.name] = event.target.value.trim();
     // console.log(formValue);
 
     localStorage.setItem(messageKey, JSON.stringify(formValue));
