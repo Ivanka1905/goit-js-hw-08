@@ -11,6 +11,14 @@ const message = form.querySelector('[name="message"]');
 const messageKey = 'feedback-form-state';
 form.addEventListener('input', Throttle(storageFormData, 500));
 form.addEventListener('submit', onSubmit);
+window.addEventListener('load', checkSt);
+
+function checkSt() {
+    if (!localStorage.getItem(messageKey)) return;
+    const formValu = JSON.parse(localStorage.getItem(messageKey));
+    email.value = formValu.email;
+    message.value = formValu.message
+}
 
 function onSubmit(event) {
     event.preventDefault();
